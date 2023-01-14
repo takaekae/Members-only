@@ -1,12 +1,20 @@
-<nav>
-    <div class="navbar__container">
-        <div class="navbar__logo">
-            <%= link_to "Blog",root_path %>
-        </div>
+<%# a av bar container with sign in and sign out  %>
 
-        <div class="navbar__links">
-            <%= link_to "Posts", posts_path %>
-            <%= link_to "New Post", new_post_path %>
-        </div>
+<nav class="navbar">
+    <div class="navbar-brand">
+        <%= link_to root_path do %>
+        <%= image_tag "https://www.redditinc.com/assets/images/site/reddit-logo.png", class: "navbar-image" %>
+        <% end %>
+        <h1 class="title">Reddit</h1>
+
+    </div>
+
+    <div class="navbar-item">
+
+    </div>
+
+    <div class="navbar-end">
+
+        <%= render 'user/session_manager' %>
     </div>
 </nav>

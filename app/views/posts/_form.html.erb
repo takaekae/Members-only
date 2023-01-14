@@ -17,6 +17,8 @@
                 <%= f.datetime_select :published_at, {ampm: true }, {class:"datetime"} %>
             </div>
             <%= f.submit %>
+            <%= link_to "Back", posts_path, class: "back__link" %>
+
         <% end %>
     </div>
 </div>

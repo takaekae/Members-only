@@ -1,0 +1,28 @@
+<div class="button-container">
+
+<%if current_user %>
+<div class="dropdown">
+  <a class="btn btn-danger dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <%# user nane  %>
+    <%= current_user.email %>
+  </a>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item"></a></li>
+    <li><a class="dropdown-item"><%= link_to "New Post", new_post_path, class: "new__post" %></a></li>
+    <li><a class="dropdown-item"><%= button_to "Sign Out", destroy_user_session_path, method: :delete , class:"sign__out"%></a></li>
+  </ul>
+</div>
+
+</div>
+
+<%else%>
+<div class="button-container">
+
+<%= button_to "Sign In", new_user_session_path, class:"sign__in"%>
+<%= button_to "Sign Up", new_user_registration_path, class:"sign__up"%>
+</div>
+
+
+
+<%end%>
