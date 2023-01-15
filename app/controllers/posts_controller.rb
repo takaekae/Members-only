@@ -11,17 +11,20 @@ class PostsController < ApplicationController
     end
 
     def show
+        @comment = Comment.new
+        @comments = @post.comments
+
     end
 
     def edit
-     end
+    end
 
 
 
 
-     def create
+    def create
         @post = Post.new(post_params)
-
+        @post.user_id = current_user.id
         respond_to do |format|
             if @post.save
             format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -49,7 +52,11 @@ class PostsController < ApplicationController
 
 
     def destroy
-        @post.destroy
+        # only the user who created the post can delete it
+        if @post.user_id == current_user.id
+            @post.destroy
+        end
+
         respond_to do |format|
             format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
             format.json { head :no_content }

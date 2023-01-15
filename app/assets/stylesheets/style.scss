@@ -175,50 +175,86 @@ body{
       margin-right: 1rem;
   }
 
+
   .navbar-end{
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 20rem;
-      .button-container{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 25rem;
-          .new__post{
-            @include first__button();
+
+
+     .dropdown{
+
+      a{
+        background-color: $fourth-color;
+
+      }
+      ul{
+        background-color: $third-color;
+
+        li{
+
+          .newpost{
+           color:$fourth-color;
+           text-decoration: none;
+           background-color: $third-color;
+          }
+          &:hover{
+            .newpost{
+              color:$text;
+            }
+          }
+
+          .signout{
+            color:$text;
             text-decoration: none;
-            &:hover{
-                @include first__button__hover();
+            background-color: $third-color;
+          }
+          &:hover{
+            .signout{
+              color:$fourth-color;
             }
+          }
+
         }
-        .sign__out{
-            @include second__button();
-            &:hover{
-                @include second__button__hover();
-            }
-        }
+      }
+
+     }
+      .button-container{
+        margin-top: .4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
         .sign__in{
           @include first__button();
           background-color: $third-color;
+          color: $text;
+          text-decoration:none;
+          border:none;
             &:hover{
               @include first__button__hover();
           }
           }
 
-          .sign__up{
+        .sign__up{
               @include second__button();
+              text-decoration:none;
+              border:none;
+
               &:hover{
                   @include second__button__hover();
+                  background-color: $fourth-color;
+                  text-decoration: underline;
+                  color: $text;
               }
           }
 
+        }
+
       }
-  }
-}
 
-
+    }
 .container{
   width: 100vw;
   height: 100%;
@@ -317,8 +353,6 @@ body{
       }
     }
   }
-
-
 }
 .show__container{
   display: flex;
@@ -328,6 +362,7 @@ body{
 
 
   .wrapper{
+
     position: relative;
     background-color: $third-color;
     color: $fourth-color;
@@ -337,7 +372,7 @@ body{
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out;
     width: 30rem;
-    height: 20rem;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -349,47 +384,132 @@ body{
       transform: translateY(1rem);
       box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     }
-  }
-  .show__title{
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-    color: $fourth-color;
-    text-align: justify;
-  }
-  .show__description{
-    font-size: 1rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-    text-align: justify;
-    margin-bottom: 2rem;
-    color: $text;
-  }
-  .show__date{
-    color: $text;
-    transition: 0.2s;
-    opacity: 80%;
-    font-size: .9rem;
-    margin-bottom: 1rem;
 
-  }
-  .show__edit--link{
-
-    @include first__button();
-    &:hover{
-        @include first__button__hover();
+    .show__title{
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      color: $fourth-color;
+      text-align: justify;
     }
-
-}
-  .show__delete--link{
-    @include second__button();
-    &:hover{
-        @include second__button__hover();
+    .show__description{
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      text-align: justify;
+      margin-bottom: 2rem;
+      color: $text;
     }
+    .show__date{
+      color: $text;
+      transition: 0.2s;
+      opacity: 80%;
+      font-size: .9rem;
+      margin-bottom: 1rem;
+      strong{
+        margin-right: .3rem;
+      }
 
+    }
+    .configure{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 20rem;
+      margin: 2rem;
+        a{
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          transition: all 0.3s ease-in-out;
+          background-color: $third-color;
+          border: none;
+          &:hover{
+            color: $fourth-color;
+            text-decoration: underline;
+          }
+        }
+        button{
+          background-color: $fourth-color;
+        }
+
+        .comment__container{
+          .comment__form{
+            height: auto;
+            form{
+              height:auto;
+             textarea{
+              background-color:$third-color;
+              color:$text;
+
+
+              &:focus{
+                border-color: 1px solid $fourth-color;
+
+              }
+             }
+
+             input[type="submit"]{
+              background-color:$fourth-color;
+              border:none;
+              margin: 1rem 0 0 14.2rem;
+              &:focus{
+                border-color: 1px solid $fourth-color;
+
+              }
+             }
+            }
+
+          }
+
+  
+            h3{
+              @include h3;
+            }
+            .comment__list{
+              color: $text;
+              font-size: .7rem;
+              .comment__date{
+
+              display: flex;
+              flex-direction: row;
+
+              p{
+                margin-left: 1rem;
+                color: $fourth-color;
+              }
+              }
+
+            }
+
+        }
+     }
+     .comment__container{
+      width: 100%;
+      height: auto;
+      h3{
+        @include h3;
+      }
+      .comment__list{
+        color: $text;
+        font-size: .7rem;
+        .comment__date{
+
+        display: flex;
+        flex-direction: row;
+
+        p{
+          margin-left: 1rem;
+          color: $fourth-color;
+        }
+        }
+
+      }
+     }
   }
-
 }
 
 .custom__container{
@@ -544,8 +664,6 @@ body{
       }
     }
   }
-
-
 }
 
 

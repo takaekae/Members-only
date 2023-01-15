@@ -2,7 +2,6 @@
         <%= form_with(model: post, local: true) do|f| %>
 
             <div class="wrapper">
-                <%= render "forerror/error", object: post%>
                 <%= f.label :title %>
                 <%= f.text_field :title %>
 

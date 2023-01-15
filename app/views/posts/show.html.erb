@@ -1,16 +1,60 @@
 <div class="show__container">
     <div class="wrapper">
         <div class="show__date">
-            <%=@post.user.email %> |
-            <%=date_time(@post) %>
+            <strong>Posted by <%=@post.user.username %></strong><%= time_ago_in_words(@post.created_at) %> ago.
         </div>
         <h3 class="show__title"><%=@post.title%></h3>
             <p class="show__description"><%=@post.description%></p>
 
         <div class="configure">
-          <%= link_to "Edit", edit_post_path(@post), class: "show__edit--link" %>
-          <%= link_to "Delete", @post, class: "show__delete--link", method: :delete, data:{confirm:"Are you sure to delete this post?"}%>
-        </div>
+            <%# if current user show the edit ang delete form %>
+            <% if current_user == @post.user %>
+                <%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
+                <%= button_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                </div>
+            <% end %>
 
+           <%# if only have a user account can comment this post  %>
+            <% if current_user %>
+                <div class="comment__container">
+                    <h3 class="comment__title">Comments</h3>
+                    <div class="comment__form">
+                        <%= form_with model: @comment, url: post_comments_path(@post), local: true do |form| %>
+                            <%= form.text_area :comment, class: "form-control", placeholder: "Write a comment" %>
+                            <%= form.submit "Comment", class: "btn btn-primary" %>
+                        <% end %>
+                    </div>
+                    <div class="comment__list">
+                        <% @post.comments.each do |comment| %>
+                            <div class="comment__item">
+                                <div class="comment__date">
+                                    <%= comment.created_at.strftime("%I:%M %p")%>| <%= comment.user.username %>
+                                </div>
+                                <p class="comment__description"><%= comment.comment %></p>
+                                 <% if current_user == @post.user || current_user == comment.user %>
+                                    <%= button_to "Delete", post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <%# else only view the comments %>
+            <% else %>
+                <div class="comment__container">
+                    <h3 class="comment__title">Comments</h3>
+                    <div class="comment__list">
+                        <% @post.comments.each do |comment| %>
+                            <div class="comment__item">
+                                <div class="comment__date">
+                                (<%= comment.created_at.strftime("%I:%M %p")%>) <%= comment.user.username %>:
+                                <p class="comment__description"><%= comment.comment %></p>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>
