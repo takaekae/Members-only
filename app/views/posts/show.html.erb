@@ -21,21 +21,21 @@
                     <div class="comment__form">
                         <%= form_with model: @comment, url: post_comments_path(@post), local: true do |form| %>
                             <%= form.text_area :comment, class: "form-control", placeholder: "Write a comment" %>
+                            <div class="comment-btn">
                             <%= form.submit "Comment", class: "btn btn-primary" %>
+                            </div>
                         <% end %>
                     </div>
                     <div class="comment__list">
                         <% @post.comments.each do |comment| %>
                             <div class="comment__item">
-                                <div class="comment__date">
-                                    <%= comment.created_at.strftime("%I:%M %p")%>| <%= comment.user.username %>
-                                </div>
+                               <div class="comment__date">
+                                (<%= comment.created_at.strftime("%I:%M %p")%>) <%= comment.user.username %>:
                                 <p class="comment__description"><%= comment.comment %></p>
+                                </div>
                                  <% if current_user == @post.user || current_user == comment.user %>
-                                    <%= button_to "Delete", post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-
+                                    <%= button_to "Delete Comment", post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
                                 <% end %>
-                            </div>
                         <% end %>
                     </div>
                 </div>

@@ -6,12 +6,12 @@
         <%= image_tag "https://www.redditinc.com/assets/images/site/reddit-logo.png", class: "navbar-image" %>
         <% end %>
         <h1 class="title">Reddit</h1>
+        <%# link all posts  %>
+            <h2><%= link_to "All Posts", posts_path%></h2>
 
     </div>
 
-    <div class="navbar-item">
 
-    </div>
 
     <div class="navbar-end">
         <%= render 'user/session_manager' %>

@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
     before_action :set_post, only: %i[show edit update destroy]
     before_action :authenticate_user!, except: [:index, :show]
+
+
     def index
         @posts = Post.all.order('published_at DESC')
+
     end
+
 
 
     def new
@@ -12,8 +16,7 @@ class PostsController < ApplicationController
 
     def show
         @comment = Comment.new
-        @comments = @post.comments
-
+        @comments = @post.comments.order('created_at ASC')
     end
 
     def edit
@@ -64,9 +67,12 @@ class PostsController < ApplicationController
     end
 
 private
+
     def set_post
         @post = Post.find(params[:id])
     end
+
+
     def post_params
         params.require(:post).permit(:title, :description,:name, :published_at, :user_id)
     end

@@ -4,13 +4,14 @@
 
   <a class="btn btn-danger dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <%# user nane  %>
-    <%= current_user.email %>
+    <%= current_user.username %>
+    <%# link to all posts  %>
   </a>
-
+  <%# link to newsfeed  %>
   <ul class="dropdown-menu " aria-labelledby="dropdownMenuButtonDark">
     <li class="d-flex justify-content-center first" ><%= link_to "New Post", new_post_path , class:"newpost" %></li>
-    <%# <li class="d-flex justify-content-center second"><%= link_to "My Posts", user_posts_path(current_user), class:"signout"%></li> 
-    <li class="d-flex justify-content-center second"><%= link_to "Edit Account", edit_user_registration_path, class:"signout"%></li>
+    <%# linto to current user posts %>
+      <li class="d-flex justify-content-center second"><%= link_to "Delete Account", edit_user_registration_path, class:"signout"%></li>
     <li class="d-flex justify-content-center second"><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"signout"%></li>
   </ul>
 </div>

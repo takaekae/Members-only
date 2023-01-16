@@ -103,7 +103,6 @@ $success-bgColor:#DFF2BF;
 @mixin input {
   width: 20rem;
   height: 4rem;
-  margin-left: 2rem;
   font-size: 1rem;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -166,6 +165,14 @@ body{
       color: $text;
       font-weight: 600;
       letter-spacing: 1px;
+
+      h2{
+        margin-left: 2rem;
+        a{
+          color: #ff6214d2;
+          text-decoration: none;
+        }
+      }
 
   }
   .navbar-image{
@@ -450,8 +457,12 @@ body{
                 border-color: 1px solid $fourth-color;
 
               }
-             }
 
+
+             }
+             ::placeholder{
+              color: $text;
+            }
              input[type="submit"]{
               background-color:$fourth-color;
               border:none;
@@ -461,27 +472,58 @@ body{
 
               }
              }
+
+
             }
 
           }
 
-  
+
             h3{
               @include h3;
             }
             .comment__list{
               color: $text;
               font-size: .7rem;
-              .comment__date{
+              .comment__item{
+                  .comment__date{
+                      display: flex;
+                      flex-direction: row;
+                      width: 100%;
+                      p{
+                        margin-left: 1rem;
+                        color: $fourth-color;
+                      }
 
-              display: flex;
-              flex-direction: row;
+                  form{
+                   input[type="submit"]{
+                    background-color:$fourth-color;
+                    border:none;
+                    margin: 1rem 0 0 14.2rem;
+                    &:focus{
+                      border-color: 1px solid $fourth-color;
 
-              p{
-                margin-left: 1rem;
-                color: $fourth-color;
+                    }
+
+                  }
+                  }
+
+            }
+            form{
+              button{
+               background-color:$fourth-color;
+               border:none;
+               margin: 1rem 0 0 14.2rem;
+               font-size: 1rem;
+               &:focus{
+                 border-color: 1px solid $fourth-color;
+
+                }
+               }
               }
-              }
+          }
+
+
 
             }
 
@@ -493,24 +535,67 @@ body{
       h3{
         @include h3;
       }
-      .comment__list{
+      .comment__form{
+        height: auto;
+        form{
+          height:auto;
+          textarea{
+            background-color:$third-color;
+            color:$text;
+
+
+            &:focus{
+              border-color: 1px solid $fourth-color;
+
+            }
+
+           }
+           ::placeholder{
+            color: $text;
+          }
+
+           input[type="submit"]{
+            background-color:$fourth-color;
+            border:none;
+            margin: 1rem 0 0 20rem;
+            &:focus{
+              border-color: 1px solid $fourth-color;
+
+            }
+           }
+
+          }
+       }
+       .comment__list{
         color: $text;
         font-size: .7rem;
-        .comment__date{
+        .comment__item{
+          .comment__date{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            p{
+              margin-left: 1rem;
+              color: $fourth-color;
+            }
+          }
+            form{
+             button{
+              background-color:$fourth-color;
+              border:none;
+              margin: 1rem 0 0 20rem;
+              font-size: 1rem;
+              &:focus{
+                border-color: 1px solid $fourth-color;
 
-        display: flex;
-        flex-direction: row;
-
-        p{
-          margin-left: 1rem;
-          color: $fourth-color;
+               }
+              }
+            }
+          }
         }
-        }
-
       }
-     }
+    }
   }
-}
 
 .custom__container{
   display: flex;
@@ -666,22 +751,343 @@ body{
   }
 }
 
-
-main{
+.sign-up-container{
   display: flex;
   flex-direction: column;
   align-items: center;
-  h2{
+  justify-content: center;
+
+
+  .wrapper{
+    position: relative;
     color: $fourth-color;
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-weight: bold;
+    padding: 1rem;
+    margin-top: 10rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2{
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+
+
+      .field{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label{
+          color: $text;
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          font-weight: bold;
+
+        }
+
+        input[type="email"]{
+          @include input;
+          background-color: $third-color;
+          // hover and focus
+          &:hover{
+            border: 1px solid $fourth-color;
+          }
+          &:focus{
+            border: 1px solid $fourth-color;
+          }
+        }
+
+        input[type="password"]{
+          @include input;
+          background-color: $third-color;
+          // hover and focus
+          &:hover{
+            border: 1px solid $fourth-color;
+          }
+          &:focus{
+            border: 1px solid $fourth-color;
+          }
+
+        }
+
+
+      }
+
+      input[type="submit"]{
+        @include second__button();
+        margin: 0 0 1rem 0;
+      }
+
+      .already-have-account{
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        p{
+          color: $text;
+        }
+        a{
+          color: $fourth-color;
+          font-size: .8rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-left: .5rem;
+          transition: all 0.3s ease-in-out;
+          &:hover{
+            color: $text;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+      }
+    }
   }
+}
+
+.sign-in-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
 
+  .wrapper{
+    position: relative;
+    color: $fourth-color;
+    padding: 1rem;
+    margin-top: 10rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2{
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
 
 
+      .field{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label{
+          color: $text;
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          font-weight: bold;
+
+        }
+
+        input[type="email"]{
+          @include input;
+          background-color: $third-color;
+          // hover and focus
+          &:hover{
+            border: 1px solid $fourth-color;
+          }
+          &:focus{
+            border: 1px solid $fourth-color;
+          }
+        }
+
+        input[type="password"]{
+          @include input;
+          background-color: $third-color;
+          // hover and focus
+          &:hover{
+            border: 1px solid $fourth-color;
+          }
+          &:focus{
+            border: 1px solid $fourth-color;
+          }
+
+        }
+
+
+      }
+
+      input[type="submit"]{
+        @include second__button();
+        margin: 0 0 1rem 0;
+      }
+
+      .already-have-account{
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        p{
+          color: $text;
+        }
+        a{
+          color: $fourth-color;
+          font-size: .8rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-left: .5rem;
+          transition: all 0.3s ease-in-out;
+          &:hover{
+            color: $text;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}
+.edit-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  .wrapper{
+    position: relative;
+    color: $fourth-color;
+    padding: 1rem;
+    margin-top: 10rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2{
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+
+
+      .field{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label{
+          color: $text;
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          font-weight: bold;
+
+        }
+
+        input[type="email"]{
+          @include input;
+          background-color: $third-color;
+          // hover and focus
+          &:hover{
+            border: 1px solid $fourth-color;
+          }
+          &:focus{
+            border: 1px solid $fourth-color;
+          }
+        }
+
+        input[type="password"]{
+          @include input;
+          background-color: $third-color;
+          // hover and focus
+          &:hover{
+            border: 1px solid $fourth-color;
+          }
+          &:focus{
+            border: 1px solid $fourth-color;
+          }
+
+        }
+
+
+      }
+
+      input[type="submit"]{
+        @include second__button();
+        margin: 0 0 1rem 0;
+      }
+
+      .already-have-account{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        p{
+          color: $text;
+          button{
+            color:$fourth-color;
+            background-color: $background;
+
+            &:hover{
+              text-decoration: underline;
+            }
+          }
+        }
+        a{
+          color: $fourth-color;
+          font-size: .8rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-left: .5rem;
+          transition: all 0.3s ease-in-out;
+          &:hover{
+            color: $text;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
 }
