@@ -3,11 +3,12 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
 
 
+
     def index
         @posts = Post.all.order('published_at DESC')
 
-    end
 
+    end
 
 
     def new
@@ -21,8 +22,6 @@ class PostsController < ApplicationController
 
     def edit
     end
-
-
 
 
     def create

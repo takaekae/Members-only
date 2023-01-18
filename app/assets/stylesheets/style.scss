@@ -143,7 +143,51 @@ html{
 body{
   background-color: $background;
 }
+.notice{
+  color: $text;
+  background-color: $fourth-color;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 5.6rem;
+  left: 0;
+  right: 0;
+  animation: fade 5s;
+  opacity: 0;
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
 
+.alert{
+  color: $text;
+  background-color: $error-color;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 5.6rem;
+  left: 0;
+  right: 0;
+  animation: fade 5s;
+  opacity: 0;
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
 .navbar{
 
   background-color: $third-color;
@@ -270,6 +314,8 @@ body{
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+
+
 
 
   .card{

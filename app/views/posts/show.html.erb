@@ -1,13 +1,22 @@
 <div class="show__container">
     <div class="wrapper">
+
+     <% if current_user %>
         <div class="show__date">
             <strong>Posted by <%=@post.user.username %></strong><%= time_ago_in_words(@post.created_at) %> ago.
         </div>
         <h3 class="show__title"><%=@post.title%></h3>
             <p class="show__description"><%=@post.description%></p>
+        <% else %>
+      <%= flash[:alert] = "You need to sign in or sign up to reveal all the secret posts" %>
+         <div class="show__date">
+            <strong>Posted by <%= "Anonymous" %></strong><%= time_ago_in_words(@post.created_at) %> ago.
+        </div>
+        <h3 class="show__title"><%= "Secret Post" %></h3>
+            <p class="show__description"><%= "....................................................................." %></p>
+    <% end %>
 
         <div class="configure">
-            <%# if current user show the edit ang delete form %>
             <% if current_user == @post.user %>
                 <%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
                 <%= button_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
@@ -47,8 +56,8 @@
                         <% @post.comments.each do |comment| %>
                             <div class="comment__item">
                                 <div class="comment__date">
-                                (<%= comment.created_at.strftime("%I:%M %p")%>) <%= comment.user.username %>:
-                                <p class="comment__description"><%= comment.comment %></p>
+                                (<%= comment.created_at.strftime("%I:%M %p")%>) <%= "Anoynymous "%>:
+                                <p class="comment__description"><%= "Hidden Comment" %></p>
                                 </div>
                             </div>
                         <% end %>

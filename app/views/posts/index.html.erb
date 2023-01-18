@@ -1,4 +1,21 @@
 <div class="container">
+    <%# if the not curent user the post title will be secret and the author will change into the anonymous %>
+    <% if !current_user  %>
+        <%@posts.each do|post|%>
+        <div class="card">
+            <h3><%= link_to "Secret Post", post_path(post), class: "card__title" %></h3>
+            <p class="card__content"><%=".............................................."%></p>
+
+            <div class="card__date">
+                <%="Anonymous" %> |
+                <%= date_time(post) %>
+            </div>
+                <%= link_to "Read More", post_path(post), class: "card__arrow" %>
+        </div>
+        <%end%>
+
+    <% else %>
+
     <%@posts.each do|post|%>
         <div class="card">
             <h3><%= link_to post.title, post_path(post), class: "card__title" %></h3>
@@ -11,4 +28,10 @@
                 <%= link_to "Read More", post_path(post), class: "card__arrow" %>
         </div>
     <%end%>
+    <%end%>
+
+
+
+
+
 </div>
